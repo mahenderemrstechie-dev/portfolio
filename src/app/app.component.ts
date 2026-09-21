@@ -187,6 +187,26 @@ type Experience = {
           </div>
         </section>
 
+        <section id="magenta" class="section magenta-section">
+          <div class="section-label">05 / CURRENT PROJECT</div>
+          <div class="section-heading-row">
+            <h2>Magenta <em>DMS.</em></h2>
+            <p>T-Systems · Dealer Management System · May 2026 — Present</p>
+          </div>
+          <div class="magenta-intro">
+            <p><strong>Magenta DMS</strong> is a dealer management system delivered as a fleet of microservices and micro frontends rather than one application. Each business capability is its own service + UI pair, composed at runtime by the Shell Application.</p>
+          </div>
+          <div class="architecture">
+            <div class="shell-node"><span>HOST APPLICATION</span><strong>Shell App</strong><small>Runtime composition</small></div>
+            <div class="architecture-grid">
+              @for (module of magentaModules; track module.ui) {
+                <article class="micro-card"><span>MICRO FRONTEND</span><h3>{{ module.ui }}</h3><div>↕</div><strong>{{ module.service }}</strong><small>Independent UI + Service pair</small></article>
+              }
+            </div>
+          </div>
+          <div class="architecture-note"><span>ARCHITECTURE</span><strong>Micro Frontends + Microservices</strong><p>Shell application hosts and composes independent business capabilities at runtime.</p></div>
+        </section>
+
         <section id="education" class="section education-section">
           <div class="section-label">05 / EDUCATION</div>
           <div class="education-card">
@@ -197,6 +217,18 @@ type Experience = {
               <p>Engineering education that established the foundation for a career in software development, systems thinking and technology.</p>
             </div>
             <div class="edu-icon">CSE</div>
+          </div>
+        </section>
+
+        <section id="certifications" class="section certifications-section">
+          <div class="section-label">06 / CERTIFICATIONS</div>
+          <div class="cert-grid">
+            @for (cert of certifications; track cert.title) {
+              <article class="cert-card">
+                <span class="cert-icon">✓</span>
+                <div><span class="company">{{ cert.type }}</span><h3>{{ cert.title }}</h3><p>{{ cert.detail }}</p></div>
+              </article>
+            }
           </div>
         </section>
 
@@ -242,47 +274,31 @@ export class AppComponent {
     { id: 'about', label: 'About' },
     { id: 'experience', label: 'Career' },
     { id: 'work', label: 'Work' },
+    { id: 'magenta', label: 'Current Project' },
     { id: 'skills', label: 'Skills' },
     { id: 'education', label: 'Education' },
     { id: 'contact', label: 'Contact' }
   ];
 
   readonly experience: Experience[] = [
-    {
-      company: 'Virtusa Consultancy Services',
-      role: 'Senior Software Engineer · AI-Native Engineer',
-      period: 'SEP 2022 — PRESENT',
-      description: 'Enterprise software engineering across modern Angular applications and evolving AI-native development practices.',
-      highlights: ['Angular', 'TypeScript', 'AI Engineering', 'Enterprise Applications']
-    },
-    {
-      company: 'Tata Consultancy Services (TCS)',
-      role: 'Systems Engineer',
-      period: 'AUG 2021 — OCT 2022',
-      description: 'Software engineering experience in enterprise delivery environments with modern front-end development.',
-      highlights: ['Angular', 'TypeScript', 'Enterprise Delivery']
-    },
-    {
-      company: 'TeamLease Services Limited',
-      role: 'Software Engineer',
-      period: 'DEC 2020 — AUG 2021',
-      description: 'Professional software development experience contributing to web application delivery.',
-      highlights: ['Web Development', 'JavaScript', 'Frontend']
-    },
-    {
-      company: 'Carbynetech India Pvt Ltd',
-      role: 'Junior Software Engineer',
-      period: 'OCT 2018 — JUL 2020',
-      description: 'Built and maintained web applications while developing strong front-end engineering fundamentals.',
-      highlights: ['Angular', 'JavaScript', 'Web Applications']
-    },
-    {
-      company: 'Vahaami Solutions LLP',
-      role: 'Web Developer',
-      period: 'NOV 2017 — AUG 2018',
-      description: 'Started professional software development career with web application development and UI engineering.',
-      highlights: ['Web Development', 'HTML', 'CSS', 'JavaScript']
-    }
+    { company: 'Virtusa Consultancy Services', role: 'Senior Software Engineer', period: 'SEP 2022 — PRESENT', description: 'Enterprise software engineering across modern Angular applications, production support and current work on Magenta DMS micro frontends and microservices.', highlights: ['Angular', 'Micro Frontends', 'Microservices', 'T-Systems'] },
+    { company: 'Tata Consultancy Services (TCS)', role: 'Angular Developer', period: 'AUG 2021 — SEP 2022', description: 'Angular development in enterprise application environments with reusable components, REST integration and responsive UI development.', highlights: ['Angular', 'TypeScript', 'RxJS', 'REST APIs'] },
+    { company: 'TeamLease Services Limited', role: 'Software Engineer', period: 'NOV 2020 — AUG 2021', description: 'Software engineering and web application development, including UI enhancements and application maintenance.', highlights: ['Web Development', 'JavaScript', 'Frontend'] },
+    { company: 'Carbynetech India Pvt Ltd', role: 'Software Engineer', period: 'OCT 2018 — JUN 2020', description: 'Developed and maintained web applications while building strong front-end engineering fundamentals.', highlights: ['Angular', 'JavaScript', 'Web Applications'] },
+    { company: 'Vahaami Solutions LLP', role: 'Software Engineer', period: 'NOV 2017 — AUG 2018', description: 'Started professional software development career building web interfaces and application features.', highlights: ['HTML', 'CSS', 'JavaScript', 'Web Development'] }
+  ];
+
+  readonly magentaModules = [
+    { ui: 'Labor Master UI', service: 'Labor Master Service' },
+    { ui: 'Customer Master UI', service: 'Customer Master Service' },
+    { ui: 'DMS Admin UI', service: 'DMS Admin Service' },
+    { ui: 'Vehicle Master UI', service: 'Vehicle Master Service' }
+  ];
+
+  readonly certifications = [
+    { type: 'AI / PROFESSIONAL DEVELOPMENT', title: 'AI Native Engineer Training Program', detail: 'Course Completion Certificate — completed in 2026' },
+    { type: 'ANGULAR', title: 'Certified Angular Developer Level 2', detail: 'Angular Training (Google)' },
+    { type: 'ANGULAR', title: 'Certified Angular Developer Intermediate Level', detail: 'HackerRank' }
   ];
 
   constructor() {
